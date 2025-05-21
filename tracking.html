@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eswatini Public Transport - Real-Time Tracking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="tracking.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Header (consistent with other pages) -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="Transportation_logo.jpg" alt="Eswatini Public Transport Logo">
+                <h1>Eswatini Public Transport</h1>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="Public_transport.html">Home</a></li>
+                    <li><a href="ticketing.html">Ticketing</a></li>
+                    <li><a href="Route.html">Routes & Schedule</a></li>
+                    <li><a href="tracking.html" class="active">Tracking</a></li>
+                    <li><a href="support.html">Support</a></li>
+                </ul>
+            </nav>
+            
+            <div class="user-actions">
+                <div class="language-selector">
+                    <select>
+                        <option value="en">English</option>
+                        <option value="ss">SiSwati</option>
+                    </select>
+                </div>
+                <button class="btn login-btn" onclick="window.location.href='login.html';">Sign In</button>
+
+            </div>
+            
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Tracking Hero Section -->
+    <section class="tracking-hero">
+        <div class="container">
+            <h1>Real-Time Bus Tracking</h1>
+            <p>Track your bus in real-time across Eswatini's road network</p>
+        </div>
+    </section>
+
+    <!-- Main Tracking Content -->
+    <main class="tracking-container">
+        <div class="container">
+            <div class="tracking-wrapper">
+                <!-- Live Tracker Section -->
+                <section class="live-tracker">
+                    <h2><i class="fas fa-map-marked-alt"></i> Live Bus Tracker</h2>
+                    <div class="tracker-controls">
+                        <div class="route-selector">
+                            <label for="track-route">Select Route:</label>
+                            <select id="track-route">
+                                <option value="">-- All Routes --</option>
+                                <option value="mbabane-manzini">Mbabane → Manzini</option>
+                                <option value="manzini-mbabane">Manzini → Mbabane</option>
+                                <option value="mbabane-big-bend">Mbabane → Big Bend</option>
+                                <option value="manzini-siteki">Manzini → Siteki</option>
+                                <option value="manzini-ngwenya">Manzini → Ngwenya</option>
+                            </select>
+                        </div>
+                        <div class="bus-selector">
+                            <label for="track-bus">Select Bus:</label>
+                            <select id="track-bus">
+                                <option value="">-- All Buses --</option>
+                                <option value="bus-101">ESW-101 (Mbabane → Manzini)</option>
+                                <option value="bus-102">ESW-102 (Manzini → Mbabane)</option>
+                                <option value="bus-201">ESW-201 (Mbabane → Big Bend)</option>
+                                <option value="bus-301">ESW-301 (Manzini → Siteki)</option>
+                            </select>
+                        </div>
+                        <button class="btn primary-btn refresh-btn">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                    
+                    <div class="map-container">
+                        <div id="tracking-map"></div>
+                        <div class="map-overlay">
+                            <div class="overlay-card">
+                                <h3>Bus Information</h3>
+                                <div class="bus-info">
+                                    <div class="info-item">
+                                        <span class="info-label">Bus Number:</span>
+                                        <span class="info-value">ESW-101</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Route:</span>
+                                        <span class="info-value">Mbabane → Manzini</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Last Update:</span>
+                                        <span class="info-value">2 minutes ago</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Next Stop:</span>
+                                        <span class="info-value">Matsapha</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">ETA:</span>
+                                        <span class="info-value">08:15 AM</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Status:</span>
+                                        <span class="info-value status-on-time">On Time</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ETA Display Section -->
+                <section class="eta-display">
+                    <h2><i class="fas fa-clock"></i> Estimated Arrival Times</h2>
+                    <div class="eta-cards">
+                        <div class="eta-card">
+                            <div class="eta-header">
+                                <h3>Mbabane → Manzini</h3>
+                                <span class="route-distance">45 km</span>
+                            </div>
+                            <div class="eta-stops">
+                                <div class="eta-stop">
+                                    <div class="stop-name">Mbabane Station</div>
+                                    <div class="stop-time departed">Departed 07:30</div>
+                                </div>
+                                <div class="eta-stop">
+                                    <div class="stop-name">Matsapha</div>
+                                    <div class="stop-time arriving">Arriving 08:15</div>
+                                </div>
+                                <div class="eta-stop">
+                                    <div class="stop-name">Manzini Station</div>
+                                    <div class="stop-time scheduled">08:45</div>
+                                </div>
+                            </div>
+                            <div class="eta-footer">
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 45%"></div>
+                                </div>
+                                <div class="progress-text">45% of journey completed</div>
+                            </div>
+                        </div>
+                        
+                        <div class="eta-card">
+                            <div class="eta-header">
+                                <h3>Manzini → Big Bend</h3>
+                                <span class="route-distance">120 km</span>
+                            </div>
+                            <div class="eta-stops">
+                                <div class="eta-stop">
+                                    <div class="stop-name">Manzini Station</div>
+                                    <div class="stop-time departed">Departed 08:00</div>
+                                </div>
+                                <div class="eta-stop">
+                                    <div class="stop-name">Siphofaneni</div>
+                                    <div class="stop-time scheduled">09:30</div>
+                                </div>
+                                <div class="eta-stop">
+                                    <div class="stop-name">Big Bend Station</div>
+                                    <div class="stop-time scheduled">10:15</div>
+                                </div>
+                            </div>
+                            <div class="eta-footer">
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 20%"></div>
+                                </div>
+                                <div class="progress-text">20% of journey completed</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Notification System -->
+                <section class="notification-system">
+                    <h2><i class="fas fa-bell"></i> Service Alerts</h2>
+                    <div class="notification-tabs">
+                        <button class="notification-tab active" data-alert="all">
+                            All Alerts
+                        </button>
+                        <button class="notification-tab" data-alert="delays">
+                            Delays
+                        </button>
+                        <button class="notification-tab" data-alert="cancellations">
+                            Cancellations
+                        </button>
+                        <button class="notification-tab" data-alert="updates">
+                            Updates
+                        </button>
+                    </div>
+                    
+                    <div class="notification-cards">
+                        <div class="notification-card alert-delay">
+                            <div class="alert-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="alert-content">
+                                <h3>Delay on Mbabane-Manzini Route</h3>
+                                <p class="alert-meta">Posted 25 minutes ago | Affects ESW-101, ESW-102</p>
+                                <p>Due to heavy traffic near Matsapha Industrial Site, buses on this route are experiencing delays of approximately 15-20 minutes.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="notification-card alert-update">
+                            <div class="alert-icon">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <div class="alert-content">
+                                <h3>Route Change: Manzini-Siteki</h3>
+                                <p class="alert-meta">Posted 2 hours ago | Affects ESW-301</p>
+                                <p>Temporary diversion near Mhlumeni due to road construction. Buses will use alternative route via Tikhuba.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="notification-card alert-cancellation">
+                            <div class="alert-icon">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                            <div class="alert-content">
+                                <h3>Cancellation: Late Night Manzini-Mbabane</h3>
+                                <p class="alert-meta">Posted yesterday | Affects ESW-112</p>
+                                <p>The 10:30 PM service from Manzini to Mbabane has been cancelled due to operational reasons. Next service at 5:30 AM.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="notification-subscribe">
+                        <h3>Get Notifications</h3>
+                        <p>Receive real-time alerts about your routes</p>
+                        <form class="subscribe-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="notify-route">Select Route</label>
+                                    <select id="notify-route">
+                                        <option value="">-- Select Route --</option>
+                                        <option value="mbabane-manzini">Mbabane → Manzini</option>
+                                        <option value="manzini-mbabane">Manzini → Mbabane</option>
+                                        <option value="mbabane-big-bend">Mbabane → Big Bend</option>
+                                        <option value="manzini-siteki">Manzini → Siteki</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="notify-method">Notification Method</label>
+                                    <select id="notify-method">
+                                        <option value="sms">SMS</option>
+                                        <option value="email">Email</option>
+                                        <option value="both">Both</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="notify-contact">Contact (Phone/Email)</label>
+                                <input type="text" id="notify-contact" placeholder="Enter phone or email" required>
+                            </div>
+                            <button type="submit" class="btn primary-btn">Subscribe to Alerts</button>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (consistent with other pages) -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Eswatini Public Transport</h3>
+                    <p>Connecting the Kingdom through reliable transportation.</p>
+                    <div class="social-icons">
+                        <a href="facebook.com"><i class="fab fa-facebook-f"></i></a>
+                        <a href="twitter.com"><i class="fab fa-twitter"></i></a>
+                        <a href="instagram.com"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="ticketing.html">Ticketing</a></li>
+                        <li><a href="routes.html">Routes</a></li>
+                        <li><a href="tracking.html">Tracking</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Customer Service</a></li>
+                        <li><a href="#">Feedback</a></li>
+                        <li><a href="#">Lost & Found</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +268 2404 0000</li>
+                        <li><i class="fas fa-envelope"></i> info@eswatini-transport.co.sz</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Mbabane, Eswatini</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Eswatini Public Transport. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Button -->
+    <div class="chatbot-btn">
+        <i class="fas fa-robot"></i>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="tracking.js"></script>
+</body>
+</html>

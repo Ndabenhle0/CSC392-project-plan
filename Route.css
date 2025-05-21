@@ -1,0 +1,425 @@
+/* Routes Page Specific Styles */
+.routes-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('eswatini-landscape.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 120px 0 80px;
+    margin-top: 80px;
+}
+
+.routes-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.routes-hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.routes-container {
+    padding: 60px 0;
+}
+
+.routes-wrapper {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 40px;
+}
+
+/* Route Selector Section */
+.route-selector {
+    margin-bottom: 40px;
+}
+
+.route-selector h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.selector-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.selector-tab {
+    padding: 10px 20px;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.selector-tab.active {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.selector-tab:not(.active):hover {
+    background-color: var(--light-color);
+}
+
+.selector-content {
+    display: none;
+}
+
+.selector-content.active {
+    display: block;
+}
+
+.route-search-form {
+    display: grid;
+    gap: 15px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.form-group select,
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-group select:focus,
+.form-group input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.all-routes-list {
+    display: grid;
+    gap: 30px;
+}
+
+.route-category h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.route-category ul {
+    list-style: none;
+}
+
+.route-category li {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #eee;
+}
+
+.route-category li:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.route-category strong {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--dark-color);
+}
+
+.route-category span {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* Map Display Section */
+.map-display {
+    margin-bottom: 40px;
+}
+
+.map-display h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.map-container {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+#route-map {
+    height: 500px;
+    width: 100%;
+}
+
+.map-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+}
+
+.map-control-btn {
+    padding: 8px 15px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: var(--transition);
+}
+
+.map-control-btn.active {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.map-control-btn:not(.active):hover {
+    background-color: white;
+}
+
+/* Timetable Section */
+.timetable-section {
+    margin-bottom: 40px;
+}
+
+.timetable-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.timetable-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.timetable-tab {
+    padding: 10px 20px;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+}
+
+.timetable-tab.active {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.timetable-tab:not(.active):hover {
+    background-color: var(--light-color);
+}
+
+.timetable-content {
+    display: none;
+}
+
+.timetable-content.active {
+    display: block;
+}
+
+.timetable-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 15px;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    border-radius: 5px 5px 0 0;
+}
+
+.timetable-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 15px;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.timetable-row:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.timetable-row:last-child {
+    border-bottom: none;
+    border-radius: 0 0 5px 5px;
+}
+
+/* Popular Destinations */
+.popular-destinations h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.destination-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.destination-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+.destination-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.destination-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.destination-info {
+    padding: 20px;
+}
+
+.destination-info h3 {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.destination-info p {
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+.destination-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.destination-stats i {
+    margin-right: 5px;
+    color: var(--secondary-color);
+}
+
+.destination-card .btn {
+    width: 100%;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .timetable-header,
+    .timetable-row {
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    }
+    
+    .timetable-header div:nth-child(4),
+    .timetable-row div:nth-child(4) {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .map-controls {
+        position: static;
+        margin-top: 15px;
+        flex-wrap: wrap;
+    }
+    
+    .timetable-header,
+    .timetable-row {
+        grid-template-columns: 1.5fr 1fr 1fr;
+    }
+    
+    .timetable-header div:nth-child(3),
+    .timetable-row div:nth-child(3) {
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .routes-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .routes-hero p {
+        font-size: 1rem;
+    }
+    
+    .routes-wrapper {
+        padding: 20px;
+    }
+    
+    .timetable-tabs {
+        flex-direction: column;
+    }
+    
+    .timetable-header,
+    .timetable-row {
+        grid-template-columns: 1.5fr 1fr;
+    }
+    
+    .timetable-header div:nth-child(2),
+    .timetable-row div:nth-child(2) {
+        display: none;
+    }
+    
+    .destination-cards {
+        grid-template-columns: 1fr;
+    }
+}
